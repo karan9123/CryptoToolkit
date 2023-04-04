@@ -1,7 +1,7 @@
 """
 This script calculates the result of a^p mod n using the square and multiply algorithm.
-
 """
+import argparse
 
 
 def square_multiply(a: int, pw: int, n: int) -> int:
@@ -24,17 +24,10 @@ def square_multiply(a: int, pw: int, n: int) -> int:
     return k
 
 
-def main() -> None:
-    """
-        Main function to get user input and call square_multiply function.
-        Prints the result of a^p mod n.
-    """
-    print("a^p mod n")
-    a = int(input("Enter base value (a): "))
-    pw = int(input("Enter Power(p): "))
-    n = int(input("Enter Mod value(n): "))
-    print(square_multiply(a, pw, n))
-
-
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("base", help="Base Value", type=int)
+    parser.add_argument("pow", help="Power", type=int)
+    parser.add_argument("mod", help="Mod", type=int)
+    args = parser.parse_args()
+    print(square_multiply(args.base, args.pow, args.mod))
